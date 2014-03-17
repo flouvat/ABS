@@ -98,7 +98,7 @@ int Zigzag::run()
 		remap[ itRelist->id ] = itRelist->oldid; 
 	}
 
-
+	
 	if(verbose)
 	{
 		cout <<"Apriori : [" << (clock()-start)/double(CLOCKS_PER_SEC) << "s]" << endl;		

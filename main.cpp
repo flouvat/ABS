@@ -23,38 +23,31 @@ int main(int argc, char *argv[])
     double ratio = 0.01;
     double err = 0.001 ;
     bool verbose = false;
-
-    a.setLevel( -1 );	
     
-    if( argc > 4 )
-    {	
-	if( strcmp( argv[ 4 ], "-o") == 0 )
-	{
+    if( argc > 4 && strcmp( argv[ 4 ], "-o") == 0 )
+    {
         
-	        ratio = atof( argv[5] ) ;
+        ratio = atof( argv[5] ) ;
         
-	        if( ratio > 1)
-	                a.setLevel( (int)( ratio) ) ;  
+        if( ratio > 1)
+                a.setLevel( (int)( ratio) ) ;  
+        else              
+                a.setLevel( -1 );
 
-	       	err = atof( argv[6] ) ;
-	       	
-	       	if( argc == 8 && strcmp( argv[ 7 ], "-v" ) == 0 )
-	       	{
+       	err = atof( argv[6] ) ;
+       	
+       	if( argc == 8 && strcmp( argv[ 7 ], "v" ) == 0 )
+       	{
 
-	       	     verbose = true ;  	        
-	       	     a.setVerbose(); // print information
-	      	}          
-	}
-	else if( strcmp( argv[4 ], "-v" ) == 0 )
-	       	{
-	       	     verbose = true ;  	        
-	       	     a.setVerbose(); // print information
-	      	}      
-
+       	     verbose = true ;  	        
+       	     a.setVerbose(); // print information
+      	}          
     }
+    else
+        a.setLevel( -1 );
 
 
-	a.setRatioNfC( ratio ) ;
+   	a.setRatioNfC( ratio ) ;
        	
    	a.setEps( err ) ; 
     
